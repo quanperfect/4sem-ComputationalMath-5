@@ -35,18 +35,18 @@ def plot(equationId, points, isAnalyticalGraphNeeded):
         idfunction_x_points = x
         idfunction_y_points = []
         C = functions.calculateC(equationId, points[0][0], points[0][1])
-        print("C = " + str(C))
         diffFunction = functions.getDiffFunction(equationId)
 
         for i in idfunction_x_points:
             idfunction_y_points.append(diffFunction(i, C))
 
-        label = "function (id = " + str(id) + ")"
+        label = "function (id = " + str(equationId) + ")"
         plt.plot(idfunction_x_points, idfunction_y_points, '--', color='green', zorder=4, label=label)
 
     x_points = []
     y_points = []
-    for i in range(len(points)):
+    plt.scatter(points[0][0],points[0][1],color='purple',zorder=5,label='init point')
+    for i in range(1, len(points)):
         x_points.append(points[i][0])
         y_points.append(points[i][1])
     plt.scatter(x_points, y_points, color='blue',zorder=3,label='points')
